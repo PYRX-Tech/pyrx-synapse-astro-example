@@ -2,12 +2,12 @@
 set -uo pipefail
 source "$(dirname "$0")/../test-helpers.sh"
 [[ -z "${SYNAPSE_API_KEY:-}" ]] && echo "Set SYNAPSE_API_KEY" && exit 1
-BASE_URL="http://localhost:4321"
+BASE_URL="http://localhost:4004"
 
 echo "Installing..."
 npm install > /dev/null 2>&1
 
-echo "Starting server on port 4321..."
+echo "Starting server on port 4004..."
 npm run dev > /dev/null 2>&1 &
 SERVER_PID=$!
 trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
